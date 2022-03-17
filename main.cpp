@@ -9,7 +9,7 @@ private:
     int accnumber;
     char type[10];
     int amount = 0;
-    int tot = 0;
+    int avai_balance = 0;
 
 public:
     void setvalue()
@@ -24,26 +24,27 @@ public:
         cout << "Enter Account Type\n";
         cin >> type;
         cout << "Enter Balance\n";
-        cin >> tot;
+        cin >> avai_balance;
     }
 
     void deposit(){
         cout << "\n Enter Amount to be Deposited \n";
         cin >> amount;
+        avai_balance = avai_balance + amount;
+        cout << "Your current available balance is " << avai_balance << endl;
     }
 
     void showbal(){
-        tot = tot + amount;
-        cout << "\n Total Balance Is: " << tot;
+
+        cout << "\n Total Balance Is: " << avai_balance;
     }
 
     void withdrawl()
     {
-        int a, avai_balance;
-        cout << "Enter Amount to Withdraw \n";
-        cin >> a;
-        avai_balance = tot - a;
-        cout << "Available Balance is: " << avai_balance;
+                cout << "Enter Amount to Withdraw \n";
+        cin >> amount;
+        avai_balance = avai_balance - amount;
+        cout << "Your current available balance is " << avai_balance << endl;
     }
 
     void showdata()
@@ -51,7 +52,7 @@ public:
         cout << "Name: " << name << endl;
         cout << "Account Number: " << accnumber << endl;
         cout << "Account Type: " << type << endl;
-        cout << "Balance: " << tot << endl;
+        cout << "Balance: " << avai_balance << endl;
     }
 };
 
@@ -67,8 +68,7 @@ int main()
         cout << "\t2. Balance Enquiry\n";
         cout << "\t3. Deposit Money\n";
         cout << "\t4. Withdraw Money\n";
-        cout << "\t5. Show Total Balance\n";
-        cout << "\t6. Cancel\n";
+        cout << "\t5. Cancel\n";
         cin >> choice;
 
         switch (choice){
@@ -85,9 +85,6 @@ int main()
                 b.withdrawl();
                 break;
             case 5:
-                b.showbal();
-                break;
-            case 6:
                 exit(1);
                 break;
             default:
